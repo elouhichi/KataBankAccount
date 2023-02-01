@@ -1,5 +1,7 @@
 package Kata.Bank.account.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,8 +12,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Entity
 public class Operation {
-    public static final String DATE_AAAA_MM_JJ = "yyyy-MM-dd";
+
+    @Id
+    long id;
 
     private LocalDate date;
 

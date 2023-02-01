@@ -1,6 +1,7 @@
 package Kata.Bank.account.domain.ports;
 
 import Kata.Bank.account.domain.Account;
+import Kata.Bank.account.domain.EnoughException;
 import Kata.Bank.account.domain.Operation;
 import Kata.Bank.account.domain.OperationType;
 import org.springframework.stereotype.Service;
@@ -13,13 +14,10 @@ public interface AccountService {
 
     Account createAccount(Account account);
     Optional<Account> findAccount(long id);
-    Account withdraw(BigDecimal amountToWithdraw , long idAccount) ;
+    Account withdraw(BigDecimal amountToWithdraw , long idAccount) throws EnoughException;
 
-    void deposit(BigDecimal amountToDeposit, long idAccount) ;
+    Account deposit(BigDecimal amountToDeposit, long idAccount) ;
 
-    BigDecimal checkBalance(OperationType operationType, BigDecimal amount);
+    List<Operation> getOperationsByType(long idAccount, OperationType type) ;
 
-    List<Operation> getWithdrawOperations(long idAccount);
-
-    List<Operation> getDepositOperations(long idAccount);
-}
+    }
